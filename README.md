@@ -14,6 +14,4 @@ Este proyecto implementw un sistema de gestión de socios, así mismo, de person
 * Maven
 **Instrucciones de compilación y ejecución:**
 1. Clonar el repositorio.
-2. Ejecutar `mvn clean package` para compilar el proyecto.
-3. Ejecutar `java -jar target/clubSocial.jar` para iniciar la
-aplicación.
+2. Cargar el proyecto en NetBeans, posteriormente, se pasa a compilar el proyecto
