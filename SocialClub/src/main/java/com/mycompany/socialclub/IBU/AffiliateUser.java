@@ -1,21 +1,21 @@
+
 package com.mycompany.socialclub.IBU;
 
 import javax.swing.JOptionPane;
+import com.mycompany.socialclub.Logic.Partners;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JButton;
 /**
  *
  * @author Camila
  */
 public class AffiliateUser extends javax.swing.JFrame {
-
-
-    String documentType[] = new String[36];
-    String document[] = new String[36];
-    String name[] = new String[36];
-    String subscriptionType[] = new String[36];
-    double initialAmount[] = new double[36];
-    double fundsLimit[] = new double[36];
-    double initialConsumption[] = new double[36];
-    
+    ArrayList<Partners> partner = new ArrayList<>();//lista que almacenara ls socios
+    Partners partnerlist; //objeto socio
+   
+    Set<String> existingDocuments = new HashSet<>();//almacena datos unicos
     
     public AffiliateUser() {
         initComponents();
@@ -50,14 +50,12 @@ public class AffiliateUser extends javax.swing.JFrame {
         btnsave = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         btnreturn = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        txtactive = new javax.swing.JFormattedTextField();
-        btnActivatep = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Camila\\OneDrive\\Escritorio\\imagenes java\\affiliate.jpg")); // NOI18N
         jLabel7.setText("jLabel7");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -102,6 +100,11 @@ public class AffiliateUser extends javax.swing.JFrame {
         cmbdoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "CC", "CE", "PT", "PA" }));
 
         cmbsubscription.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Regular", "VIP" }));
+        cmbsubscription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbsubscriptionActionPerformed(evt);
+            }
+        });
 
         txtdoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +112,9 @@ public class AffiliateUser extends javax.swing.JFrame {
             }
         });
 
+        txtinitialamount.setEditable(false);
+
+        txtfunds.setEditable(false);
         txtfunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfundsActionPerformed(evt);
@@ -116,6 +122,11 @@ public class AffiliateUser extends javax.swing.JFrame {
         });
 
         btnautho.setText("Authorize Person");
+        btnautho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnauthoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -194,6 +205,7 @@ public class AffiliateUser extends javax.swing.JFrame {
         );
 
         btnclean.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnclean.setIcon(new javax.swing.ImageIcon("C:\\Users\\Camila\\OneDrive\\Escritorio\\Contenido\\eraser.png")); // NOI18N
         btnclean.setText("Clean");
         btnclean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +214,7 @@ public class AffiliateUser extends javax.swing.JFrame {
         });
 
         btnsave.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnsave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Camila\\OneDrive\\Escritorio\\Contenido\\plus.png")); // NOI18N
         btnsave.setText("Save");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,20 +233,6 @@ public class AffiliateUser extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Active partners");
-
-        txtactive.setEditable(false);
-        txtactive.setText("0");
-
-        btnActivatep.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnActivatep.setText("Activate partner");
-        btnActivatep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActivatepActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -247,26 +246,17 @@ public class AffiliateUser extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(141, 141, 141)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtactive, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(156, 156, 156))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addComponent(btnclean, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnActivatep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(89, 89, 89))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(btnclean, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,24 +267,17 @@ public class AffiliateUser extends javax.swing.JFrame {
                     .addComponent(btnreturn))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnclean)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnActivatep, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtactive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnclean, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -305,9 +288,7 @@ public class AffiliateUser extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -329,64 +310,76 @@ public class AffiliateUser extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfundsActionPerformed
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
-        String active = txtactive.getText();
-        int act = Integer.parseInt(active);
         
-        if (act < 35) {
+        String document = txtdoc.getText().trim();//guarda los documentos en la variable, elimina espacios en blanco
 
-            documentType[act] = (String) cmbdoc.getSelectedItem();
-            document[act] = txtdoc.getText();
-            name[act] = txtname.getText();
-            subscriptionType[act] = (String) cmbsubscription.getSelectedItem();
-            initialAmount [act]= Double.parseDouble(txtinitialamount.getText());
-            fundsLimit [act] = Double.parseDouble(txtfunds.getText());
-            initialConsumption [act]= Double.parseDouble(txtinitialamount.getText());
-            }
+        if (existingDocuments.contains(document)) {//verifica si el doc ya esta en existingDocuments
+        JOptionPane.showMessageDialog(null, "Duplicate document. Please try another document.");
+            return; // impide guardar por duplicidad
+    }
+        existingDocuments.add(document);//agrega a existingDocuments
         
-            //incrementa act, actualiza txtactive
-            act++;
-            txtactive.setText(String.valueOf(act));
-
-
-            JOptionPane.showMessageDialog(this, "The partner was successfully logged in.");
+        
+        if ((partner.size()) < 35){
+            
+            //obtenemos los datos ingresado
+            String documentType = (String) cmbdoc.getSelectedItem();;
+            String name = txtname.getText();
+            String subscriptionType = (String) cmbsubscription.getSelectedItem();;
+            double initialAmount = Double.parseDouble(txtinitialamount.getText());;
+            double fundsLimit = Double.parseDouble(txtfunds.getText());;
+            double initialConsumption = Double.parseDouble(txtinitialamount.getText());;
+            
+            partner.add(partnerlist);//agrega el socio a la lista
+            JOptionPane.showMessageDialog(null, "The partner was successfully added in.");
             btncleanActionPerformed(evt); // limpia
-
-        
-        
-        
+        }else {
+            JOptionPane.showMessageDialog(null, "No more users can be added. The list contains the exact data");
+            }
     }//GEN-LAST:event_btnsaveActionPerformed
 
-    private void btnActivatepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivatepActionPerformed
-        String active = txtactive.getText();
-        int act = Integer.parseInt(active);
-
-        if(act < 35){
-            act = act ++;
-            active = String.valueOf(act);
-
-            txtactive.setText(active);//cuando de clic en la flecha de adelante incremente el indice
-
-        }
-    }//GEN-LAST:event_btnActivatepActionPerformed
-
     private void txtdocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdocActionPerformed
+
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdocActionPerformed
 
+    private void btnauthoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnauthoActionPerformed
+        Guest ini = new Guest();
+        ini.setVisible(true);
+        ini.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btnauthoActionPerformed
+
     private void btnreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreturnActionPerformed
-        volverMenuPrincipal();
+        backMainMenu();
     }//GEN-LAST:event_btnreturnActionPerformed
 
-    private void volverMenuPrincipal(){
-        MainMenu pantalla = new MainMenu();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
-        dispose();
+    private void cmbsubscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbsubscriptionActionPerformed
+        
+        String subscriptionType = cmbsubscription.getSelectedItem().toString();//obtiene tipo de susc, convierte a String
+
+        switch (subscriptionType) {
+            case "Regular" -> {
+                txtinitialamount.setText("50000");
+                txtfunds.setText("1000000");
+            }
+            case "VIP" -> {
+                txtinitialamount.setText("100000");
+                txtfunds.setText("5000000");
+            }
+        } 
+    }//GEN-LAST:event_cmbsubscriptionActionPerformed
+
+    public void backMainMenu(){
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
+        menu.setLocationRelativeTo(null);
+        
+        
+        dispose(); //Cerrar ventana
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActivatep;
     private javax.swing.JButton btnautho;
     private javax.swing.JButton btnclean;
     private javax.swing.JButton btnreturn;
@@ -395,7 +388,6 @@ public class AffiliateUser extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbsubscription;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -407,7 +399,6 @@ public class AffiliateUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JFormattedTextField txtactive;
     private javax.swing.JTextField txtdoc;
     private javax.swing.JTextField txtfunds;
     private javax.swing.JTextField txtinitialamount;
