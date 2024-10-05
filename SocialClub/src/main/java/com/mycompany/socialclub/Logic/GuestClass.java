@@ -1,10 +1,5 @@
-
 package com.mycompany.socialclub.Logic;
 
-/**
- *
- * @author Camila
- */
 public class GuestClass {
     private String name;
     private int document;
