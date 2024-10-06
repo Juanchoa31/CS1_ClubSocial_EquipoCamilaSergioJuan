@@ -3,7 +3,7 @@ package com.mycompany.socialclub.Logic;
 public class Partners {
 
     public static int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     private String documentType;
     private String document;
