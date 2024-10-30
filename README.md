@@ -1,6 +1,8 @@
 # CS1_ClubSocial_EquipoCamilaJuan
 **Nombre de la Materia:** Construcción de software 1.
+
 **Nombre del Proyecto:** Club Social
+
 **Equipo:** EquipoCamilaJuan
 
 **Integrantes:**
@@ -13,6 +15,7 @@ Este proyecto implementw un sistema de gestión de socios, así mismo, de person
 **Requerimientos:**
 * Java 22
 * Maven
+  
 **Instrucciones de compilación y ejecución:**
 1. Clonar el repositorio.
 2. Cargar el proyecto en NetBeans, posteriormente, se pasa a compilar el proyecto
