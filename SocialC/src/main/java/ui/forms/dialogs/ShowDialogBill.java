@@ -18,8 +18,8 @@ public class ShowDialogBill extends javax.swing.JDialog {
     public ShowDialogBill(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setTitle("Invoice Done");
-        this.setLocationRelativeTo(null);
+        this.setTitle("Invoice Done"); //Setea un título en la ventana
+        this.setLocationRelativeTo(null);//simplemente lo centra
     }
 
     
@@ -88,21 +88,23 @@ public class ShowDialogBill extends javax.swing.JDialog {
         File file = new File(path);
         
         try{
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String firstLine = br.readLine().trim();
-            String[] columnsName = firstLine.split(",");
-            DefaultTableModel model = (DefaultTableModel)memberTbl.getModel();
-            model.setColumnIdentifiers(columnsName);
+            BufferedReader br = new BufferedReader(new FileReader(file));//Instancio objeto tipo buffered para leer lineas
+            String firstLine = br.readLine().trim();//Lee la primera linea del archivo
+            String[] columnsName = firstLine.split(",");//Almacenar las columnas donde se muestra la información
+            DefaultTableModel model = (DefaultTableModel)memberTbl.getModel();//Las arroja a la tabla
+            model.setColumnIdentifiers(columnsName);//Finalizando con los nombre ya parametrizados
             
-            Object[] tableLine = br.lines().toArray();
+            Object[] tableLine = br.lines().toArray();//Almacena lineas de la tabla
             
             for (int i = 0; i < tableLine.length; i++) {
                 String line = tableLine[i].toString().trim();
                 String[] dataRow = line.split(",");
-                model.addRow(dataRow);
+                model.addRow(dataRow);//Este for, sirve para cuando se recorra, cada vez que haga una vuelta
+                //Asigne una linea nueva a la tabla
             }
             }catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Information cannot be displayed. File not found");
+                //Una excepción en caso de que no encuentre el archivo
             }      
     }//GEN-LAST:event_searchBtnActionPerformed
 
@@ -110,6 +112,7 @@ public class ShowDialogBill extends javax.swing.JDialog {
         String path = location.getPath();
         File file = new File(path);
         String memberId = JOptionPane.showInputDialog("Enter Member ID to make payment:");
+        //El programa solicita por medio de un JOptionPane el id del miembro para hacer el pago de la factura
         
         try{
              if (memberId != null && !memberId.isEmpty()) {
@@ -118,11 +121,12 @@ public class ShowDialogBill extends javax.swing.JDialog {
 
             for (int i = 0; i < model.getRowCount(); i++) {
                 if (model.getValueAt(i, 0).toString().equals(memberId)){
-                    model.removeRow(i);
+                    model.removeRow(i);//Luego de haber sido pagada, elimina la linea que contenia la información de deuda
                     foundIt = true;
                     JOptionPane.showMessageDialog(null, "Invoice paid successfully.");
 
-                    updateFileCsv(model);
+                    updateFileCsv(model);//Linea para actualizar el archivo para que no vuelva a mostrar la información
+                    //luego de cerrado el programa
                     break;
                 }
               }
@@ -145,6 +149,8 @@ public class ShowDialogBill extends javax.swing.JDialog {
                 } else {
                     fw.write("" + (col < model.getColumnCount() - 1 ? "," : "\n"));
                 }
+                
+                //La unica funcion de este método es actualizar el archivo, método que se llama en el módulo de pago
             }
         }
         }catch(Exception ex){

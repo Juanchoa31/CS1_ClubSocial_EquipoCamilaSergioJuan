@@ -6,7 +6,8 @@ public class LocationArchive {
 
     public LocationArchive() { 
         fileName = "archive6";
-        path = "archives/" + fileName + ".csv";
+        path = "archives/" + fileName + ".csv";//Se crea método para instanciarse en otras clase, 
+        //este sirve para darle una ruta y un nombre al archivo csv para almacenar las facturas
     }
     
     /**

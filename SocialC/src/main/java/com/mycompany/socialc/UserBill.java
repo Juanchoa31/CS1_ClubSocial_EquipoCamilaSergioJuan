@@ -14,7 +14,8 @@ public class UserBill {
         this.nameMember = nameMember;
         this.costDes = costDes;
         this.amountPay = amountPay;
-    }
+    }//Se crea clase y por ende constructor para los atributos que va a tener la factura
+    
 
     /**
      * @return the alias

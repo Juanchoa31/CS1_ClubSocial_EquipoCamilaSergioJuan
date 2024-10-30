@@ -122,10 +122,12 @@ public class UserDialogFormBill extends javax.swing.JDialog {
             String costDes = costDescrptionTxt.getText();
             String amountPay = amountPayTxt.getText();
             
+            //Método para que cuando se ingrese los datos por el form, los almacene en el archivo csv
             
             String lineCSV = String.join(",",idMember, nameMember, costDes, amountPay);
+            //Esta línea lo único que hace es que permite ingresar los datos al archivo csv separados por comas
 
-        fr.append(lineCSV + "\n");
+        fr.append(lineCSV + "\n");//Los agrega y cierra la conexión
         fr.close();            
         }
     }
@@ -142,6 +144,8 @@ public class UserDialogFormBill extends javax.swing.JDialog {
 
             JOptionPane.showMessageDialog(this, "Save data  \n" + userBills.getInfo());
             HomeViewFormBill.bills.add(userBills);
+            //Lo realizado en este método, es guardar toda la información previa que teníamos del método writetofile
+            //Y guarda la data, para luego cerrar la conexión
             this.dispose();
         } catch (IOException ex) {
             Logger.getLogger(UserDialogFormBill.class.getName()).log(Level.SEVERE, null, ex);

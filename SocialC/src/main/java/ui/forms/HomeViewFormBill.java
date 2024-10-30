@@ -98,7 +98,7 @@ public class HomeViewFormBill extends javax.swing.JFrame {
         }else{
             System.out.println(file.getPath());
             file.createNewFile();
-        }
+        }//Método para crear un archivo nuevo
     }
     
     private void newMenuUserItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuUserItemActionPerformed
@@ -106,13 +106,14 @@ public class HomeViewFormBill extends javax.swing.JFrame {
         udf.setVisible(true);
         udf.setLocationRelativeTo(null);
     }//GEN-LAST:event_newMenuUserItemActionPerformed
-
+    //Método para llamar el form para la factura
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         ShowDialogBill dialog = new ShowDialogBill(this, rootPaneCheckingEnabled);
         dialog.setVisible(true);
         dialog.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    ////Método para llamar el form para la factura
+    
     /**
      * @param args the command line arguments
      */
