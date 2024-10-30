@@ -1,10 +1,9 @@
-# CS1_ClubSocial_EquipoCamilaSergioJuan
+# CS1_ClubSocial_EquipoCamilaJuan
 **Nombre de la Materia:** Construcción de software 1.
 **Nombre del Proyecto:** Club Social
 **Equipo:** EquipoCamilaSergioJuan
 **Integrantes:**
 * Camila Gómez Gómez
-* Sergio Andrés Cardona
 * Juan David Ortiz Zapata
   
 **Descripción:**
