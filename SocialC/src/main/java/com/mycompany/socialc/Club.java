@@ -46,7 +46,7 @@ class Club {
         StringBuilder memberList = new StringBuilder("List of Members:\n");//eñ StringBuilder para eliminar socios
         for (Partner member : members.values()) {//itera sobre cada socio
             memberList.append("ID: ").append(member.id)//agrega id del partner
-                      .append(", Name member: ").append(member.name)//agrega nombre del part
+                      .append(", Name: ").append(member.name)//agrega nombre del part
                       .append(", Type: ").append(member.getMembershipType())//agrega tipo de suscripcion
                       .append(", Available Funds: $").append(member.availableFunds)//agrega fondos disponibles
                       .append("\n");//agrega linea entre socios
